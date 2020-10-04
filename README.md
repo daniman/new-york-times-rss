@@ -4,5 +4,5 @@ To run:
 
 ```
 npm install
-npm start
+npm start:dev
 ```
