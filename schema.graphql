@@ -1,0 +1,95 @@
+"""
+An item from the RSS feed, following standard RSS item format: https://validator.w3.org/feed/docs/rss2.html.
+"""
+type Item {
+  title: String
+  id: String
+  description: String
+  url: String
+  link: String
+  author: String
+  created: String
+  content: String
+}
+
+"""
+The entry point to this schema.
+"""
+type Query {
+  """
+  A very quick way to query data from the New York Times API that's available via RSS feed (no API key required).
+  """
+  rss(
+    """
+    Specify which page's RSS feed you want (defaults to HomePage if unspecified).
+    """
+    page: Page
+  ): [Item]
+}
+
+"""
+A list of all the pages you can request an RSS feed for, per the New York Times API docs. Source: [https://developer.nytimes.com/docs/rss-api/1/overview](https://developer.nytimes.com/docs/rss-api/1/overview)
+"""
+enum Page {
+  Africa
+  Americas
+  ArtandDesign
+  Arts
+  AsiaPacific
+  Automobile
+  Baseball
+  Books
+  Business
+  Climate
+  CollegeBasketball
+  CollegeFootball
+  Dance
+  Dealbook
+  DiningandWine
+  Economy
+  Education
+  EnergyEnvironment
+  Europe
+  FashionandStyle
+  Golf
+  Health
+  Hockey
+  HomePage
+  Jobs
+  Lens
+  MediaandAdvertising
+  MiddleEast
+  MostEmailed
+  MostShared
+  MostViewed
+  Movies
+  Music
+  NYRegion
+  Obituaries
+  PersonalTech
+  Politics
+  ProBasketball
+  ProFootball
+  RealEstate
+  Science
+  SmallBusiness
+  Soccer
+  Space
+  Sports
+  SundayBookReview
+  """
+  We special-case the lookup of Sunday-Review in our `Query.rss` resolver since the page has a `-` in it, but we cannot have a `-` in our enum name.
+  """
+  SundayReview
+  Technology
+  Television
+  Tennis
+  Theater
+  TMagazine
+  Travel
+  Upshot
+  US
+  Weddings
+  Well
+  YourMoney
+}

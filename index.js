@@ -1,35 +1,19 @@
-const fs = require("fs");
-const { ApolloServer, gql } = require("apollo-server");
+const { ApolloServer } = require("apollo-server");
+const Feed = require("rss-to-json");
+const fs = require("fs", "utf8");
 
-const typeDefs = gql`
-  type Book {
-    title: String
-    author: String
-    description: String
-    hello: String
-  }
-
-  type Query {
-    books: [Book]
-  }
-`;
-
-const books = [
-  {
-    title: "The Awakening",
-    author: "Kate Chopin",
-    review: "Pretty good.",
-  },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
-    review: "A little hard to discern.",
-  },
-];
+const typeDefs = fs.readFileSync("./schema.graphql", "utf8").toString();
 
 const resolvers = {
   Query: {
-    books: () => books,
+    rss: async (_, { page }) => {
+      var rss = await Feed.load(
+        `https://rss.nytimes.com/services/xml/rss/nyt/${
+          page === "SundayReview" ? "Sunday-Review" : page || "HomePage"
+        }.xml`
+      );
+      return rss.items;
+    },
   },
 };
 
