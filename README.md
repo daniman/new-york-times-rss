@@ -6,3 +6,9 @@ To run:
 npm install
 npm start:dev
 ```
+
+Hosted on Heroku, automatically deployed from `main`.
+
+## To run queries
+1. visit https://demo.apollo.dev
+2. then visit https://studio.apollographql.com/graph/new-york-times-rss/explorer
