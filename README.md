@@ -6,5 +6,5 @@ Hosted on Heroku, automatically deployed from `main`.
 
 ```
 npm install
-npm start:dev
+npm run start:dev
 ```
