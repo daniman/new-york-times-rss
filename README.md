@@ -1,13 +1,13 @@
 An extremely light-weight GraphQL server that wraps the New York Times RSS feed (no API keys, yay). Use this graph to query top stories of the day from all the New York Times's curated pages.
 
-To run:
+Hosted on Heroku, automatically deployed from `main`.
+
+## To develop
 
 ```
 npm install
 npm start:dev
 ```
-
-Hosted on Heroku, automatically deployed from `main`.
 
 ## To run queries
 1. visit https://demo.apollo.dev
