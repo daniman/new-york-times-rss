@@ -8,7 +8,3 @@ Hosted on Heroku, automatically deployed from `main`.
 npm install
 npm start:dev
 ```
-
-### To run queries
-1. visit https://demo.apollo.dev
-2. then visit https://studio.apollographql.com/graph/new-york-times-rss/explorer
